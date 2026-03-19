@@ -1,0 +1,125 @@
+.event-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.loader {
+  border: 5px solid #eee;
+  border-top: 5px solid #0f5132;
+  border-radius: 50%;
+
+  width: 40px;
+  height: 40px;
+
+  animation: spin 1s linear infinite;
+
+  margin: 50px auto;
+}
+
+.event-hero img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in;
+}
+
+.event-content {
+  padding: 20px;
+
+  background: white;
+  margin-top: -40px;
+  border-radius: 10px;
+}
+
+.event-content h2 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.event-year {
+  color: #0f5132;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.event-description {
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.event-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.nav-btn {
+  background: #d4af37;
+  color: #222;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.nav-btn:hover {
+  opacity: 0.8;
+}
+
+.back-btn {
+  display: inline-block;
+
+  background: #0f5132;
+  color: white;
+
+  padding: 10px 15px;
+  border-radius: 5px;
+
+  text-decoration: none;
+}
+
+.back-btn:hover {
+  background: #0c3d27;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 768px) {
+
+  .event-details {
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .event-hero img {
+    height: 400px;
+    border-radius: 10px;
+  }
+
+  .event-content {
+    padding: 30px;
+  }
+
+  .event-content h2 {
+    font-size: 32px;
+  }
+
+}

@@ -1,0 +1,102 @@
+.hero {
+  /* Establish a new stacking context to keep backgrounds properly layered */
+  isolation: isolate; 
+  position: relative;
+  
+  /* Flexbox for perfect horizontal and vertical centering */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+  /* Ensure it looks like a full banner even on ultra-wide screens */
+  min-height: 70vh; 
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  color: white;
+
+  /* Image 1 (Base Layer) */
+  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url("../assets/home1.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Base styles for Image 2 and Image 3 layers */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0; /* Shorthand for top, right, bottom, left: 0 */
+  z-index: -1; /* Places the images behind the text, but above the base background */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none; /* Prevents pseudo-elements from interfering with text highlighting */
+}
+
+/* Image 2 */
+.hero::before {
+  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url("../assets/home2.png");
+  opacity: 0;
+  animation: fadeImage2 20s infinite;
+}
+
+/* Image 3 */
+.hero::after {
+  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url("../assets/home3.png");
+  opacity: 0;
+  animation: fadeImage3 20s infinite;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin: 0;
+}
+
+/* --- Animation Keyframes --- */
+/* Total cycle: 20 seconds (6.66s per image, with a smooth ~2.2s crossfade) */
+
+@keyframes fadeImage2 {
+  0%, 22% { opacity: 0; }     /* Wait while Image 1 is visible */
+  33%, 55% { opacity: 1; }    /* Fade in and hold Image 2 */
+  66%, 100% { opacity: 0; }   /* Fade out as Image 3 appears */
+}
+
+@keyframes fadeImage3 {
+  0%, 55% { opacity: 0; }     /* Wait while Image 1 & 2 are visible */
+  66%, 88% { opacity: 1; }    /* Fade in and hold Image 3 */
+  100% { opacity: 0; }        /* Fade out to reveal Image 1 again */
+}
+
+/* --- Stilovi za dugme --- */
+.hero-btn {
+  position: absolute;
+  bottom: 30px; /* Margina od donje ivice */
+  right: 30px;   /* Margina od leve ivice */
+  background-color: #0f5132; /* Tvoja tražena zelena boja */
+  color: white;
+  text-decoration: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px; /* Blago zaobljene ivice */
+  z-index: 10; /* Osigurava da dugme ostane iznad pozadinskih slika i može da se klikne */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Efekat kada se pređe mišem preko dugmeta */
+.hero-btn:hover {
+  background-color: #146c43; /* Nešto svetlija zelena za hover efekat */
+  transform: translateY(-2px); /* Blago podizanje dugmeta */
+}

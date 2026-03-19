@@ -1,0 +1,61 @@
+#events-container {
+  display: grid;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+#events-container div {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  cursor: pointer;
+  
+  transition: transform 0.2s ease;
+}
+
+#events-container div:hover {
+  transform: translateY(-5px);
+}
+
+#events-container img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Naslov */
+#events-container h3 {
+  font-size: 18px;
+  margin: 15px;
+}
+
+/* Godina */
+#events-container strong {
+  margin: 0 15px;
+  color: #0f5132;
+}
+
+/* Opis */
+#events-container p {
+  margin: 10px 15px 20px;
+  font-size: 14px;
+  color: #444;
+}
+
+@media (min-width: 600px) {
+
+  #events-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (min-width: 900px) {
+
+  #events-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}
