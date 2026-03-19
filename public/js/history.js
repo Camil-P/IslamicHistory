@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:7079/api/islamic-history/events";
+const API_URL = "https://islamichistoryserver-production.up.railway.app/api/islamic-history/events";
 
 async function loadEventDetails() {
     const loader = document.getElementById("loader");
